@@ -1,0 +1,373 @@
+/* Основной стиль страницы */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #87CEEB, #FFFACD); /* стартовый фон — Главная */
+    transition: background 1s ease; /* плавный переход при смене градиента */
+}
+
+/* Шапка и логотип */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #FF7F50, #FFA500); /* кораллово-оранжевый */
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background 0.5s ease;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Навигация */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+nav .tab-btn {
+    background: linear-gradient(to bottom, #FFD700, #FFC107);
+    border: none;
+    color: #004080;
+    font-size: 16px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 5px;
+}
+
+nav .tab-btn:hover {
+    background: linear-gradient(to bottom, #FFEB3B, #FFC107);
+    transform: scale(1.05);
+}
+
+nav .tab-btn.active {
+    background: linear-gradient(to bottom, #FFA500, #FF8C00);
+    color: white;
+}
+
+/* Основной контент */
+main {
+    padding: 20px;
+    min-height: 70vh;
+    transition: background 0.5s ease;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+    text-align: center;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Картинки с эффектом увеличения */
+.zoom-img {
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.zoom-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Галерея для поездки */
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Подвал */
+footer {
+    background: linear-gradient(to right, #FF7F50, #FFA500);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    transition: background 0.5s ease;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Кнопка управления музыкой */
+#music-toggle {
+    margin-left: 20px;
+    padding: 8px 12px;
+    background: linear-gradient(to bottom, #FFD700, #FFC107);
+    border: none;
+    color: #004080;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#music-toggle:hover {
+    background: linear-gradient(to bottom, #FFEB3B, #FFC107);
+    transform: scale(1.05);
+}
+
+/* Текст внутри табов */
+.tab-content p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #000;
+    max-width: 800px;
+    margin: 10px auto;
+}
+
+
+/* Планшеты и телефоны */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav .tab-btn {
+        width: 100%;
+        text-align: left;
+        margin: 5px 0;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .zoom-img {
+        width: 90%;
+        margin: 10px auto;
+        display: block;
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+    }
+
+    #music-toggle {
+        margin: 10px 0 0 0;
+        width: 100%;
+    }
+}
+
+/* Очень маленькие экраны (телефоны) */
+@media (max-width: 480px) {
+    .tab-content p {
+        font-size: 14px;
+    }
+
+    nav .tab-btn {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    header .logo img {
+        height: 30px;
+    }
+}
+/* Модальное окно для увеличения картинок */
+.modal {
+    display: none; /* по умолчанию скрыто */
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8); /* затемнение */
+}
+
+/* Картинка внутри модального окна */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    animation: zoomIn 0.4s ease;
+}
+
+/* Анимация увеличения */
+@keyframes zoomIn {
+    from {transform: scale(0.7); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Кнопка закрытия */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ff9800;
+}
+.movie-list {
+    list-style: none;
+    padding: 0;
+    max-width: 300px;
+    margin: 10px auto 20px auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.movie-list li {
+    padding: 8px 12px;
+    background-color: #fff;
+    margin: 5px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.movie-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 25px;
+    color: #2c3e50;
+}
+.movie-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.movie-gallery figure {
+    margin: 0;
+    text-align: center;
+    width: 200px;
+}
+
+.movie-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.movie-gallery img:hover {
+    transform: scale(1.1);
+}
+
+.movie-gallery figcaption {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.media-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+.media-content {
+    flex: 2;
+    max-width: 600px;
+}
+
+.side-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.side-gallery img {
+    width: 120px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.side-gallery img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .media-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-gallery {
+        display: none;
+    }
+
+    .media-content {
+        max-width: 100%;
+    }
+}
+/* Контейнер для постера и списка */
+.media-block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0px;
+    margin: 40px auto;
+    max-width: 100px;
+}
+
+/* Постер */
+.poster img {
+    width: 200px;          /* ширина постера */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.poster img:hover {
+    transform: scale(1.05);
+}
+
+/* Список фильмов */
+.movie-list-wrapper {
+    flex: 1;  /* список занимает оставшееся пространство */
+}
