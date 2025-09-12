@@ -21,30 +21,25 @@ const gradients = {
 // Переключение табов
 tabs.forEach(tab => {
     tab.addEventListener("click", () => {
-        // Убираем активность у всех табов
+        
         tabs.forEach(btn => btn.classList.remove("active"));
         contents.forEach(content => content.classList.remove("active"));
 
-        // Делаем активным выбранный таб и его контент
         tab.classList.add("active");
         const newContent = document.getElementById(tab.dataset.tab);
         newContent.classList.add("active");
 
-        // Останавливаем предыдущую музыку
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
 
-        // Обновляем текущий аудио для нового раздела
         currentAudio = newContent.querySelector("audio");
 
-        // Включаем музыку, если она была включена
         if (isMusicOn && currentAudio) {
             currentAudio.play();
         }
-
-        // Меняем градиент фона
+        
         document.body.style.transition = "background 1s ease";
         document.body.style.background = gradients[tab.dataset.tab];
     });
