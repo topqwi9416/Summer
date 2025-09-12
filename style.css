@@ -3,9 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #87CEEB, #FFFACD);
-    /* стартовый фон — Главная */
     transition: background 1s ease;
-    /* плавный переход при смене градиента */
 }
 
 /* Шапка и логотип */
@@ -64,12 +62,9 @@ nav .tab-btn.active {
 /* Основной контент */
 main {
     max-width: 1000px;
-    /* ограничение ширины */
     margin: 0 auto;
-    /* выравнивание по центру */
     padding: 20px;
     text-align: left;
-    /* сбрасываем центрирование */
 }
 
 .tab-content {
@@ -83,10 +78,8 @@ main {
 
 .tab-content p {
     text-align: left;
-    /* выравниваем абзацы по левому краю */
     margin: 10px auto;
     max-width: 800px;
-    /* ограничиваем ширину текста */
 }
 
 .tab-content ul {
@@ -238,7 +231,6 @@ footer {
 /* Модальное окно для увеличения картинок */
 .modal {
     display: none;
-    /* по умолчанию скрыто */
     position: fixed;
     z-index: 1000;
     padding-top: 50px;
@@ -248,7 +240,6 @@ footer {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
-    /* затемнение */
 }
 
 /* Картинка внутри модального окна */
@@ -291,11 +282,11 @@ footer {
     color: #ff9800;
 }
 figcaption {
-    text-align: center;       /* Центрируем подпись */
-    font-size: 0.9em;         /* Немного меньше основного текста */
-    color: #555;              /* Более приглушённый цвет */
-    margin-top: 8px;          /* Отступ сверху */
-    max-width: 90%;           /* Не растягивать на всю ширину */
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 8px;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
