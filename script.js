@@ -2,10 +2,11 @@
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".tab-content");
 const musicToggle = document.getElementById("music-toggle");
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const closeBtn = document.querySelector(".close");
 
 let isMusicOn = false;
-
-// Устанавливаем текущий аудиоплеер на Главной при загрузке
 let currentAudio = document.querySelector("#home audio");
 
 // Градиенты для каждого раздела
@@ -21,7 +22,7 @@ const gradients = {
 // Переключение табов
 tabs.forEach(tab => {
     tab.addEventListener("click", () => {
-        
+        // Переключаем активный таб и контент
         tabs.forEach(btn => btn.classList.remove("active"));
         contents.forEach(content => content.classList.remove("active"));
 
@@ -29,18 +30,12 @@ tabs.forEach(tab => {
         const newContent = document.getElementById(tab.dataset.tab);
         newContent.classList.add("active");
 
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-        }
-
+        // Переключаем музыку
+        if (currentAudio) currentAudio.pause();
         currentAudio = newContent.querySelector("audio");
+        if (isMusicOn && currentAudio) currentAudio.play();
 
-        if (isMusicOn && currentAudio) {
-            currentAudio.play();
-        }
-        
-        document.body.style.transition = "background 1s ease";
+        // Меняем фон
         document.body.style.background = gradients[tab.dataset.tab];
     });
 });
@@ -48,7 +43,6 @@ tabs.forEach(tab => {
 // Кнопка включения/выключения музыки
 musicToggle.addEventListener("click", () => {
     isMusicOn = !isMusicOn;
-
     if (isMusicOn && currentAudio) {
         currentAudio.play();
         musicToggle.textContent = "🎵 Музыка: вкл";
@@ -59,10 +53,6 @@ musicToggle.addEventListener("click", () => {
 });
 
 // Увеличение картинки по клику
-const modal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-const closeBtn = document.querySelector(".close");
-
 document.querySelectorAll(".zoom-img").forEach(img => {
     img.addEventListener("click", () => {
         modal.style.display = "block";
@@ -70,13 +60,8 @@ document.querySelectorAll(".zoom-img").forEach(img => {
     });
 });
 
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// Закрытие по клику вне картинки
+// Закрытие модального окна
+closeBtn.addEventListener("click", () => modal.style.display = "none");
 modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
+    if (e.target === modal) modal.style.display = "none";
 });
