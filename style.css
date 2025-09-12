@@ -2,8 +2,10 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #87CEEB, #FFFACD); /* стартовый фон — Главная */
-    transition: background 1s ease; /* плавный переход при смене градиента */
+    background: linear-gradient(to bottom, #87CEEB, #FFFACD);
+    /* стартовый фон — Главная */
+    transition: background 1s ease;
+    /* плавный переход при смене градиента */
 }
 
 /* Шапка и логотип */
@@ -11,10 +13,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #FF7F50, #FFA500); /* кораллово-оранжевый */
+    background: linear-gradient(to right, #FF7F50, #FFA500);
+    /* кораллово-оранжевый */
     color: white;
     padding: 10px 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: background 0.5s ease;
 }
 
@@ -60,19 +63,54 @@ nav .tab-btn.active {
 
 /* Основной контент */
 main {
+    max-width: 1000px;
+    /* ограничение ширины */
+    margin: 0 auto;
+    /* выравнивание по центру */
     padding: 20px;
-    min-height: 70vh;
-    transition: background 0.5s ease;
+    text-align: left;
+    /* сбрасываем центрирование */
 }
 
 .tab-content {
     display: none;
     animation: fadeIn 0.5s ease-in-out;
-    text-align: center;
 }
 
 .tab-content.active {
     display: block;
+}
+
+.tab-content p {
+    text-align: left;
+    /* выравниваем абзацы по левому краю */
+    margin: 10px auto;
+    max-width: 800px;
+    /* ограничиваем ширину текста */
+}
+
+.tab-content ul {
+    margin: 20px auto;
+    padding-left: 0;
+    max-width: 700px;
+    text-align: left;
+}
+
+.tab-content img {
+    display: block;
+    margin: 20px auto;
+}
+
+.tab-content h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* Картинки с эффектом увеличения */
@@ -85,7 +123,7 @@ main {
 
 .zoom-img:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Галерея для поездки */
@@ -97,7 +135,7 @@ main {
 
 /* Подвал */
 footer {
-    background: linear-gradient(to right, #FF7F50, #FFA500);
+    background: linear-gradient(to right, #7ADAA5, #239BA7);
     color: white;
     text-align: center;
     padding: 10px;
@@ -106,8 +144,13 @@ footer {
 
 /* Анимация появления */
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Кнопка управления музыкой */
@@ -191,9 +234,11 @@ footer {
         height: 30px;
     }
 }
+
 /* Модальное окно для увеличения картинок */
 .modal {
-    display: none; /* по умолчанию скрыто */
+    display: none;
+    /* по умолчанию скрыто */
     position: fixed;
     z-index: 1000;
     padding-top: 50px;
@@ -202,7 +247,8 @@ footer {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.8); /* затемнение */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* затемнение */
 }
 
 /* Картинка внутри модального окна */
@@ -212,14 +258,21 @@ footer {
     max-width: 90%;
     max-height: 80%;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     animation: zoomIn 0.4s ease;
 }
 
 /* Анимация увеличения */
 @keyframes zoomIn {
-    from {transform: scale(0.7); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Кнопка закрытия */
@@ -237,6 +290,15 @@ footer {
 .close:hover {
     color: #ff9800;
 }
+figcaption {
+    text-align: center;       /* Центрируем подпись */
+    font-size: 0.9em;         /* Немного меньше основного текста */
+    color: #555;              /* Более приглушённый цвет */
+    margin-top: 8px;          /* Отступ сверху */
+    max-width: 90%;           /* Не растягивать на всю ширину */
+    margin-left: auto;
+    margin-right: auto;
+}
 .movie-list {
     list-style: none;
     padding: 0;
@@ -251,13 +313,19 @@ footer {
     background-color: #fff;
     margin: 5px 0;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .movie-list li:hover {
     transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 23px;
+    color: #000;
 }
 
 h2 {
@@ -265,6 +333,13 @@ h2 {
     margin-top: 25px;
     color: #2c3e50;
 }
+
+.text {
+    text-align: center;
+    margin-top: 23px;
+    color: #000;
+}
+
 .movie-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -343,31 +418,66 @@ h2 {
         max-width: 100%;
     }
 }
+
 /* Контейнер для постера и списка */
 .media-block {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 0px;
-    margin: 40px auto;
-    max-width: 100px;
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-/* Постер */
 .poster img {
-    width: 200px;          /* ширина постера */
+    width: 180px;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.poster img:hover {
-    transform: scale(1.05);
-}
-
-/* Список фильмов */
 .movie-list-wrapper {
-    flex: 1;  /* список занимает оставшееся пространство */
+    flex: 1;
+    max-width: 320px;
+}
+
+.movie-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.movie-list li {
+    padding: 8px 12px;
+    margin: 5px 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.movie-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.month-title {
+    text-align: center;
+    margin-right: 750px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 25px;
+    color: #2c3e50;
+}
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
